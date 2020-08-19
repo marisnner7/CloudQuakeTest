@@ -27,13 +27,13 @@ class Parser
   end
 
   def parse_line(line)
-    pattern = /\d+:\d+ \w+:/
-    match = ṕattern.match(line)
-    task = match.to_s.split(" ")[1]
-
-    if (task == "InitGame:")
+		pattern = /\d+:\d+ \w+:/
+		match = pattern.match(line)
+		task = match.to_s.split(" ")[1]
+		
+		if (task == "InitGame:")
 			self.start_game
-		elsif (task == "ClientUserInfoChanged:")
+		elsif (task == "ClientUserinfoChanged:")
 			self.parse_update(match.post_match)
 		elsif (task == "Kill:")
 			self.parse_kill(match.post_match)
@@ -41,9 +41,7 @@ class Parser
 			id = match.post_match.match(/\d+/).to_s
 			@map[id] = nil
 		end
-
-    
-  end
+	end
 
   def parse_update(data)
 		id = data.match(/\d+/).to_s
