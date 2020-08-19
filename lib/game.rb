@@ -1,3 +1,4 @@
+require 'json'
 class Game
 
   attr_accessor :kills
@@ -24,6 +25,20 @@ class Game
     @players[@players.find_index(name)] = newName
   end
 
+  def kill(killer, mod="0")
+    @total_kills += 1
+    @kills[killer] += 1
+    @kill_mods[MODS[mod]] += 1
+  end
+
+  def world_kill(killed, mod="0")
+    @total_kills += 1
+    @kills[killed] -= 1
+    @kill_mods[MODS[mod]] += 1
+  end
   
+  def to_s
+    "game_#{@game}: {\n" +  "  total_kills: #{@total_kills}; \n" + "  players: " + @players.to_json + "\n" + "  kills: " + @kills.to_json + "\n  kills_by_means: " + @kill_mods.to_json + "\n}"
+  end
 
 end
