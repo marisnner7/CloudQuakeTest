@@ -3,7 +3,7 @@ require 'parser'
 RSpec.describe Parser, "log" do
   it "should receive the log in the constructor " do
     parser = Parser.new("---------")
-    expect(parser.log).to eq "--------"
+    expect(parser.log).to eq "---------"
   end
 end
 
