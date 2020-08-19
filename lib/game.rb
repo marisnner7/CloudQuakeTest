@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'json'
 class Game
   attr_accessor :kills

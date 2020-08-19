@@ -1,8 +1,11 @@
+# frozen_string_literal: true
+
 require_relative 'game'
+# class created for parsing
 class Parser
   attr_accessor :log, :games
 
-  WORLD = '1022'.freeze
+  WORLD = '1022'
 
   def initialize(log)
     @log = log

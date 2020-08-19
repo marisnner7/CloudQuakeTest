@@ -1,14 +1,16 @@
+# frozen_string_literal: true
+
 require 'parser'
 
 RSpec.describe Parser, 'log' do
-  it 'should receive the log in the constructor ' do
+  it 'receives the log in the constructor ' do
     parser = Parser.new('---------')
     expect(parser.log).to eq '---------'
   end
 end
 
 RSpec.describe Parser, 'games' do
-  it 'should start as an empty array' do
+  it 'starts as an empty array' do
     parser = Parser.new('----------')
     expect(parser.games).to eq []
   end

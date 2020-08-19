@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require './lib/parser'
 
 class App
@@ -30,6 +32,6 @@ class App
     puts 'global_ranking: ' + JSON.pretty_generate(ranking) + "\n"
   end
 
-  m = App.new('./log/quake.log')
-  m.run
+  report = App.new('./log/quake.log')
+  report.run
 end

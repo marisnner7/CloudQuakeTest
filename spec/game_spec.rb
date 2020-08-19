@@ -1,18 +1,20 @@
+# frozen_string_literal: true
+
 require 'game'
 
-RSpec.describe Game, 'kills' do
-  it 'should start empty' do
+RSpec.describe Game '.kills' do
+  it 'starts empty' do
     game = Game.new(0)
     expect(game.kills).to be_empty
   end
 
-  it 'should have value 0 as default for a key' do
+  it 'has value 0 as default for a key' do
     game = Game.new(0)
     game.new_player('Marianne')
     expect(game.kills['Marianne']).to eq 0
   end
 
-  it "should increase it's value whenever a key has a kill registered" do
+  it "increases it's value whenever a key has a kill registered" do
     game = Game.new(0)
     game.new_player('Marianne')
     game.kill('Marianne', '0')
@@ -21,7 +23,7 @@ RSpec.describe Game, 'kills' do
     expect(game.kills['Marianne']).to eq 2
   end
 
-  it 'should keep the kills even when player changes his/her name' do
+  it 'keeps the kills even when player changes name' do
     game = Game.new(0)
     game.new_player('Marianne')
     game.kill('Marianne', '0')
@@ -43,13 +45,13 @@ RSpec.describe Game, 'kills' do
   end
 end
 
-RSpec.describe Game, 'total_kills' do
-  it 'should start as 0' do
+RSpec.describe Game 'total_kills' do
+  it 'starts as 0' do
     game = Game.new(0)
     expect(game.instance_variable_get(:@total_kills)).to eq 0
   end
 
-  it 'should increase when someone is killed' do
+  it 'increases when someone is killed' do
     game = Game.new(0)
     game.new_player('Marianne')
     game.kill('Marianne', '0')
