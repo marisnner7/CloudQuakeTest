@@ -45,5 +45,29 @@ class Parser
     
   end
 
+  def parse_update(data)
+		id = data.match(/\d+/).to_s
+		post_id = data.match(/\d+/).post_match.to_s
+		name = post_id.match(/\\.*?\\/).to_s
+		
+		name = name[1..name.length-2]
+		
+		if (@map[id])
+			@games[@counter].change_player_name(@map[id], name)
+		else
+			@games[@counter].new_player(name)
+		end
+		@map[id] = name
+	end
+	
+	def parse_kill(data)
+		ids = data.match(/\d+ \d+ \d+/).to_s.split(" ")
+		if (ids[0] == WORLD)
+			@games[@counter].world_kill(@map[ids[1]], ids[2])
+		else
+			@games[@counter].kill(@map[ids[0]], ids[2])
+		end
+	end
+
   
 end
